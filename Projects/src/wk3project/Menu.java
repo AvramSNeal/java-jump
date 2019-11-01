@@ -24,7 +24,7 @@ public class Menu {
 		case 2: removeEmp();break;
 		case 3: modifyEmp();break;
 		case 4: printEmp();break;
-		case 5: System.out.println("Employee Management System Closed.");;break;
+		case 5: System.out.println("Employee Management System Closed!");;break;
 		default: System.out.println("WIP");break;
 		}
 	}
