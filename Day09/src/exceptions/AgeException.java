@@ -29,7 +29,7 @@ public class AgeException {
 			System.out.println("Exception occurred!" + e.getMessage());
 			//e.printStackTrace();
 		} finally {
-			System.out.println("Yeah! Finally! Suck it losers! Input in finally block!");
+			System.out.println("Finally! Inside of finally block!");
 		}
 		
 		System.out.println(" Reached after Try-Finally!");
