@@ -1,5 +1,7 @@
 package wk3project;
 
+//The Employee class has all of the members required in the instructions as well as getters and setters.
+//Lastly, an Override to display the employee data in an intuitive format.
 public class Employee {
 	private int id;
 	private String lastName;
