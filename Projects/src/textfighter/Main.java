@@ -19,9 +19,9 @@ public class Main {
 		
 		//System.out.println(Arrays.toString(cards.initDeck()));
 		
-		//for(int i=0; i<cards.initDeck().length; i++) {
-			System.out.println(cards.DECK[0]);
-		//}
+		for(int i=0; i<cards.getDeck().length; i++) {
+			System.out.println(i + " " + cards.DECK[i]);
+		}
 		
 	}
 
