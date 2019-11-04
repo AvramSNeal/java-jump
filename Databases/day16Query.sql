@@ -26,10 +26,54 @@ CREATE TABLE IF NOT EXISTS jobs (
 */
 # INSERT INTO jobs(job_id, job_title, min_salary, max_salary) VALUES('QQ', 'ADMIN', 1000, 30000);
 # DESC jobs;
-
+/*
 CREATE TABLE IF NOT EXISTS countries (
 	country_id		varchar(2),
     country_name	varchar(40)
     CHECK(country_name IN('Italy','India','China')),
     region_id decimal(10,0)
+);
+*/
+/*
+CREATE TABLE IF NOT EXISTS job_history (
+	EMPLOYEE_ID decimal(6,0) NOT NULL,
+    START_DATE date NOT NULL,
+    END_DATE date NOT NULL,
+    CHECK (END_DATE LIKE '--/--/----'),
+    JOB_ID varchar(10) NOT NULL,
+    DEPARTMENT_ID decimal(4,0) NOT NULL
+);
+*/
+# DESC job_history;
+# drop table countries;
+/*
+CREATE TABLE IF NOT EXISTS countries (
+	COUNTRY_ID varchar(2) NOT NULL,
+    COUNTRY_NAME varchar(40) NOT NULL,
+    REGION_ID decimal(10,0) NOT NULL,
+    UNIQUE(COUNTRY_ID)
+);
+*/
+/*
+CREATE TABLE IF NOT EXISTS jobs (
+	JOB_ID varchar(10) NOT NULL UNIQUE,
+    JOB_TITLE varchar(35) NOT NULL DEFAULT ' ',
+    MIN_SALARY decimal(6,0) DEFAULT 8000,
+    MAX_SALARY decimal(6,0) DEFAULT NULL
+);
+
+insert into jobs(job_id) values('QQ');
+select * from jobs;
+*/
+/*
+CREATE TABLE IF NOT EXISTS countries (
+	COUNTRY_ID varchar(2) NOT NULL UNIQUE,
+    COUNTRY_NAME varchar(40) NOT NULL,
+    REGION_ID decimal(10,0) NOT NULL
+);
+*/
+CREATE TABLE IF NOT EXISTS countries (
+	COUNTRY_ID integer NOT NULL UNIQUE AUTO_INCREMENT,
+    COUNTRY_NAME varchar(40) NOT NULL,
+    REGION_ID decimal(10,0) NOT NULL
 );
