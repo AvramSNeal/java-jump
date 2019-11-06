@@ -120,20 +120,46 @@ select * from countries;
 /*
 INSERT INTO country_new SELECT * FROM countries;
 */
-/**/
+/*
 CREATE TABLE IF NOT EXISTS jobs (
 	JOB_ID integer NOT NULL UNIQUE,
     JOB_TITLE varchar(35) NOT NULL,
     MIN_SALARY decimal(6,0)
 );
+*/
+# INSERT INTO jobs VALUES(1001,'OFFICER',0000);
 
-INSERT INTO jobs VALUES(1001, 'OFFICER',0000);
-/**/
+/*
+CREATE TABLE IF NOT EXISTS countries (
+	COUNTRY_ID integer NOT NULL,
+    COUNTRY_NAME varchar(40) NOT NULL,
+    REGION_ID integer NOT NULL,
+    PRIMARY KEY(COUNTRY_ID,COUNTRY_NAME)
+);
+*/
+/*
+CREATE TABLE IF NOT EXISTS countries (
+	COUNTRY_ID integer NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    COUNTRY_NAME varchar(40) NOT NULL,
+    REGION_ID integer NOT NULL
+);
 
-/**/
+INSERT INTO countries(COUNTRY_NAME,REGION_ID) VALUE('India',185);
+SELECT * FROM countries;
+*/
 
-/**/
+/*
+CREATE TABLE IF NOT EXISTS jobs (
+	JOBS_ID integer NOT NULL UNIQUE PRIMARY KEY,
+    JOB_TITLE varchar(35) NOT NULL DEFAULT ' ',
+    MIN_SALARY decimal(6,0) DEFAULT 8000,
+    MAX_SALARY decimal(6,0) DEFAULT 20000
+);
 
+INSERT INTO jobs(JOB_ID,JOB_TITLE) VALUES(1001,'OFFICER');
+INSERT INTO jobs(JOB_ID,JOB_TITLE) VALUES(1002,'CLERK');
+*/
+ 
 /**/
 
 /**/
