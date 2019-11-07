@@ -61,4 +61,34 @@ ON (d.manager_id = e.employee_id);
 
 #9
 SELECT d.department_name, e.first_name, l.city
-FROM departments d;
+FROM departments d
+JOIN employees e
+	ON (d.manager_id = e.employee_id)
+JOIN locations l USING (location_id);
+
+#10
+SELECT job_title, AVG(salary)
+FROM employees
+NATURAL JOIN jobs
+GROUP BY job_title;
+
+#11
+SELECT job_title, first_name, salary-min_salary 'Salary - Min_Salary'
+FROM employees
+NATURAL JOIN jobs;
+
+#12
+SELECT jh.* FROM job_history jh
+JOIN employees e
+	ON (jh.employee_id = e.employee_id)
+WHERE salary > 10000;
+
+#13
+SELECT first_name, last_name, hire_date, salary,
+	(DATEDIFF(now(), hire_date))/365 Experience
+FROM departments d JOIN employees e
+	ON (d.manager_id = e.employee_id)
+WHERE (DATEDIFF(now(), hire_date))/365>15 and
+	e.manager_id in (SELECT DISTINCT manager_id FROM employees);
+
+
