@@ -27,3 +27,7 @@ SELECT employee_id, first_name, MID(hire_date, 6, 2) as hire_month FROM employee
 #7
 SELECT employee_id, REVERSE(SUBSTR(REVERSE(email),4)) as Email_ID
 FROM employees;
+
+#12
+SELECT job_title, SUBSTR(job_title,1, INSTR(job_title, ' ')-1)
+FROM jobs;
