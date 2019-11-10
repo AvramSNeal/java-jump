@@ -22,3 +22,5 @@ CREATE TABLE IF NOT EXISTS `employees` (
   PRIMARY KEY (`EMPLOYEE_ID`),
   FOREIGN KEY(department_id) REFERENCES departments(department_id)
 );
+
+
