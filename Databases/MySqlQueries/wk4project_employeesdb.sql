@@ -1,4 +1,9 @@
+-- This query will create the employeesdb schema database, select it, 
+-- create a departments table, add values to it, and create an employees table.
+
 CREATE SCHEMA IF NOT EXISTS `employeesdb`;
+
+USE employeesdb;
 
 CREATE TABLE IF NOT EXISTS `departments` (
   `DEPARTMENT_ID` int NOT NULL,
