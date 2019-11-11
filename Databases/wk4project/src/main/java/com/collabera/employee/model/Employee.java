@@ -39,15 +39,8 @@ public class Employee {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public int getDepartment() {
-		int dept=1;
-		switch(this.department) {
-		case ACCOUNTING: dept = 1; break;
-		case HR: dept = 2; break;
-		case DEVELOPMENT: dept = 3; break;
-		case SALES: dept = 4; break;
-		}
-		return dept;
+	public Department getDepartment() {
+		return department;
 	}
 	public void setDepartment(Department department) {
 		this.department = department;

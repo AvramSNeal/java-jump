@@ -105,7 +105,7 @@ public class EmployeeDao {
 		statement.setInt(1, emp.getId());
 		statement.setString(2, emp.getLastName());
 		statement.setString(3, emp.getFirstName());
-		statement.setInt(4, emp.getDepartment());
+		statement.setInt(4, emp.getDepartment().ordinal()+1);
 		int count = 0;
 		try {
 			count = statement.executeUpdate();
