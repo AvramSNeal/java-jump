@@ -1,4 +1,4 @@
-package com.collabera.day14maven;
+package com.collabera.jdbcdemo.app;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

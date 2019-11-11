@@ -1,7 +1,5 @@
 package com.collabera.jdbcdemo.dao;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -71,7 +69,7 @@ public class EmployeeDao {
 	}
 
 	// Method for pulling employees from the employee database
-	List<Employee> getAllEmployees() throws SQLException, FileNotFoundException, IOException {
+	List<Employee> getAllEmployees() throws SQLException{
 
 		List<Employee> list = new ArrayList<Employee>();
 
