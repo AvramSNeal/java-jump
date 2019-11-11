@@ -1,4 +1,4 @@
-package com.collabera.day14maven;
+package com.collabera.jdbcdemo.app;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -10,10 +10,10 @@ import java.util.Properties;
 
 import org.apache.log4j.Logger;
 
+import com.collabera.jdbcdemo.dao.CityDao;
+import com.collabera.jdbcdemo.dao.CountryDao;
 import com.collabera.jdbcdemo.model.City;
-import com.collabera.jdbcdemo.model.CityDao;
 import com.collabera.jdbcdemo.model.Country;
-import com.collabera.jdbcdemo.model.CountryDao;
 
 import jdk.internal.org.jline.utils.Log;
 

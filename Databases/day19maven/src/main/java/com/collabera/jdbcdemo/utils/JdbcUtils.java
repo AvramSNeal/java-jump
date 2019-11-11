@@ -1,4 +1,4 @@
-package com.collabera.jdbcdemo.model;
+package com.collabera.jdbcdemo.utils;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;

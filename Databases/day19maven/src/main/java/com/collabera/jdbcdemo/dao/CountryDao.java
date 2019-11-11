@@ -1,4 +1,4 @@
-package com.collabera.jdbcdemo.model;
+package com.collabera.jdbcdemo.dao;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -13,6 +13,9 @@ import java.util.List;
 import java.util.Properties;
 
 import org.apache.log4j.Logger;
+
+import com.collabera.jdbcdemo.model.Country;
+import com.collabera.jdbcdemo.utils.JdbcUtils;
 
 public class CountryDao {
 	private static final Logger logger =

@@ -1,4 +1,4 @@
-package com.collabera.jdbcdemo.model;
+package com.collabera.jdbcdemo.dao;
 
 import java.sql.Statement;
 import java.io.FileInputStream;
@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.apache.log4j.Logger;
+
+import com.collabera.jdbcdemo.model.City;
 
 import java.util.*;
 

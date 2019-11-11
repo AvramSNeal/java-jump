@@ -1,4 +1,4 @@
-package com.collabera.employee.dao;
+package com.collabera.jdbcdemo.dao;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -11,9 +11,8 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.collabera.employee.connection.JdbcUtils;
-import com.collabera.employee.model.Department;
-import com.collabera.employee.model.Employee;
+import com.collabera.jdbcdemo.utils.*;
+import com.collabera.jdbcdemo.model.*;
 
 public class EmployeeDao {
 
