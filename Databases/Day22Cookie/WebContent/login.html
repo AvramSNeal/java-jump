@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <title>Login Example</title>
+<style>
+	form{
+		display: inline-block;
+		width: 100px;
+	}
+</style>
 </head>
 <body>
+	<h2>Please Log in: </h2>
 	<form action="LoginServlet" method="post">
-		Name:<input type="text" name="name"><br>
-		Password:<input type="password" name="password"><br>
+		<label>Name:</label><input type="text" name="name"><br>
+		<label>Password:</label><input type="password" name="password"><br>
 		<input type="submit" value="login">
 	</form>
 </body>
