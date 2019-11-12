@@ -8,6 +8,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServlet;
 
+@SuppressWarnings("serial")
 public class HelloWorldServlet extends HttpServlet {
 	public void service(ServletRequest req,ServletResponse res)
 	throws IOException,ServletException{

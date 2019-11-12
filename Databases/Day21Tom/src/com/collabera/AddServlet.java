@@ -7,14 +7,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+@SuppressWarnings("serial")
 public class AddServlet extends HttpServlet{
 	public void init(ServletConfig config) {
 		System.out.println("AddServlet is initialized");
 	}
-//	
-//	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
-//		calc(req,res);
-//	}
+	
+	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		calc(req,res);
+	}
 	
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		calc(req,res);
