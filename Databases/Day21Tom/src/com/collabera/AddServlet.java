@@ -13,9 +13,9 @@ public class AddServlet extends HttpServlet{
 		System.out.println("AddServlet is initialized");
 	}
 	
-	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
-		calc(req,res);
-	}
+//	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
+//		calc(req,res);
+//	}
 	
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		calc(req,res);
