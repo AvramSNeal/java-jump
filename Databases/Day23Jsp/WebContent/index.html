@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>JSP Demo</title>
+<style>
+	body{
+	background-color:black;
+	color: white;
+	
+	}
+	a{
+		padding: 10px;
+		margin: 0 20px;
+		font-family: "Verdana", Verd, Sans-serif;
+		text-decoration: none;
+		font-weight: bold;
+		color: green;
+		
+	}
+	a:hover{
+		background-color: lightgray;
+	}
+</style>
+</head>
+<body>
+	<h1>JSP Index Page</h1>
+	<a href="hello.jsp">Hello</a>|
+	<a href="test/testfolder.jsp">Test Folder</a>|
+	<a href="currentTime.jsp">Current Time</a>|
+	<a href="declaration.jsp">Declaration</a>|
+	<a href="redirect.jsp">Redirect</a>
+	<hr>
+	<h3>Welcome Form</h3>
+	<form action="welcome.jsp" method="post">
+		User Name: <input type="type" name="uname">
+		<input type="submit" value="Submit"><br/>
+	</form>
+</body>
+</html>
