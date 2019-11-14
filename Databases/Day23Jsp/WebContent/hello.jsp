@@ -10,6 +10,7 @@
 	int count = 0;
 %>
 <body>
+	<%@ page errorPage="error.jsp" %>
 	<% out.print("<h2>Welcome to JSP!</h2>"); %>
 	
 	<%
@@ -17,5 +18,6 @@
 		out.print("Counting " + (++count) + "<br>");
 	} while (count!=10);
 	%>
+	<% int i = 5/0; %>
 </body>
 </html>
