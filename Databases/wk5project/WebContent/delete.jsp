@@ -13,7 +13,7 @@ String id=request.getParameter("id");
 int empId=Integer.parseInt(id);
 EmployeeDao.delete(empId);
 %>
-<p>The Employee has been deleted! </p>
+<p>The Employee has been Deleted! </p>
 <a href="view.jsp?pageNo=1">Back to Employee List</a>
 </body>
 </html>

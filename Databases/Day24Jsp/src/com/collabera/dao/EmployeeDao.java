@@ -25,6 +25,10 @@ public class EmployeeDao {
 				.collect(Collectors.toList());
 	}
 	
+	public static Employee getEmployee(int id) {
+		return employeeMap.get(id);
+	}
+	
 	public static Employee insert(Employee emp) {
 		return employeeMap.put(emp.getId(), emp);
 	}

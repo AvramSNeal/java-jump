@@ -24,6 +24,7 @@ List<Employee> list=EmployeeDao.getList(pageNo, pageSize);
 int nrPages= (int)Math.ceil(EmployeeDao.getTotalRecords()/(double)pageSize);
 %>
 <h1>Page No: <%= pageNo %></h1>
+<a href="create.jsp">Add a New Employee</a>
 <table class="emp-table" border="1">
 <tr>
 	<th>Id</th>
