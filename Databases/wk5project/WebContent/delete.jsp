@@ -11,7 +11,6 @@
 	background-color:white;
 	color: black;
 	font-family: "Verdana", Verd, Sans-serif;
-	
 	}
 	a{
 		padding: 4px;
