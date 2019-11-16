@@ -10,6 +10,28 @@
 	table{
 		cellpadding: 4;
 		width: 60%;
+		border: 1px solid black;
+	}
+	tr:hover{
+		background-color: lightgrey;
+	}
+	body{
+	background-color:white;
+	color: black;
+	font-family: "Verdana", Verd, Sans-serif;
+	
+	}
+	a{
+		padding: 4px;
+		margin: 0 10px;
+		text-decoration: none;
+		font-weight: bold;
+		color: blue;
+		
+	}
+	a:hover{
+
+		color: limegreen;
 	}
 
 </style>
@@ -19,13 +41,21 @@
 String spageNo=request.getParameter("pageNo");
 int pageNo=Integer.parseInt(spageNo);
 int pageSize=10;
-List<Employee> list=EmployeeDao.getList(pageNo, pageSize);
+List<Employee> list = EmployeeDao.getList(pageNo, pageSize);
 
 int nrPages= (int)Math.ceil(EmployeeDao.getTotalRecords()/(double)pageSize);
 %>
-<h1>Page No: <%= pageNo %></h1>
-<a href="create.jsp">Add a New Employee</a>
+<h2>Employee Management System</h2>
+
+<h3>Page No: <%= pageNo %></h3>
+
+<table> 
+<tr>
+	<th><a href="create.jsp">Add a New Employee</a></th>
+</tr>
+</table>
 <table class="emp-table" border="1">
+
 <tr>
 	<th>Id</th>
 	<th>First Name</th>
@@ -51,7 +81,7 @@ int nrPages= (int)Math.ceil(EmployeeDao.getTotalRecords()/(double)pageSize);
 <span>Pages: </span>
 <%
 String cssActive="";
-for(int i=1; i<nrPages; i++){
+for(int i=1; i<=nrPages; i++){
 	if(i==pageNo){
 		cssActive="active";
 	}

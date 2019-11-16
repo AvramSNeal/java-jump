@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Add(Create) Employee</title>
+<title>Update Employee</title>
 <style>
 	body{
 	background-color:white;
@@ -29,19 +29,19 @@
 </head>
 <body>
 <%
-Employee emp = new Employee("", "");
+String firstName=request.getParameter("firstName");
+String lastName=request.getParameter("lastName");
+Employee emp = new Employee(firstName, lastName);
+emp = EmployeeDao.insert(emp);
+if(emp!=null){
+	out.print("<h3>Employee : "
+			+  emp.getFirstName()
+			+ " " + emp.getLastName()
+			+ " - Saved!</h3>");
+}
+
 %>
-
-<h2>Add(Create) New Employee: </h2>
-	<form action="doCreate.jsp" method="post">
-		<label>First Name:</label>
-			<input type="text" name="firstName" value="<%=emp.getFirstName() %>"><br>
-		<label>Last Name:</label>
-			<input type="text" name="lastName" value="<%=emp.getLastName() %>"><br>
-		<input type="submit" value="Save">
-	</form>
-
-<br>
+<hr>
 <a href="view.jsp?pageNo=1">Back to Employee List</a>
 </body>
 </html>

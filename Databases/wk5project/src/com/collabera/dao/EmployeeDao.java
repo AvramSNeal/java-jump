@@ -1,7 +1,7 @@
 package com.collabera.dao;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,79 +12,38 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
 
-import com.collabera.dao.EmployeeDao;
-import com.collabera.connection.JdbcUtils;
+import org.apache.log4j.Logger;
+
 import com.collabera.model.Employee;
 
 public class EmployeeDao {
+	private static final Logger logger = Logger.getLogger(EmployeeDao.class.getName()); // log 4J named logger
 	
-	//private static final Logger logger = Logger.getLogger(EmployeeDao.class.getName()); // log 4J named logger
+	static Map<Integer, Employee> employeeMap = new TreeMap<Integer, Employee>(); // TreeMap to populate with employees
 	
-	private static HashMap<String, Employee> cache = new HashMap<String, Employee>();
+	private static HashMap<String, Employee> cache = new HashMap<String, Employee>(); // HashMap to hold a selection of employees
 	
-	static Map<Integer, Employee> employeeMap = new TreeMap<Integer, Employee>();
-	static {
-		/*
-		for(int i=0; i<120; i++) {
-			employeeMap.put(i, new Employee(i, "Fname" + i, "Lname"+i));
-			System.out.println("employeeMap size: " + employeeMap.size());
-		}
-		*/
-		
-		EmployeeDao employeeDao = new EmployeeDao();
-
-		// Try to print out list of employees found in the database
+	// A method for establishing a connection to the database
+	public static Connection Connect() throws SQLException {
 		try {
-			List<Employee> employee = employeeDao.getAllEmployees();
-			if (employee.size() > 0) {
-				//Log.info("SUCCESS: Employee List: ");
-				for(Employee emp : employee) {
-					employeeMap.put(emp.getId(), new Employee(emp.getId(), emp.getFirstName(), emp.getLastName()));
-					System.out.println("employeeMap size: " + employeeMap.size());
-					//Log.info(emp);
-				}
-				
-			} else {
-				//Log.info("FAILURE: No employees exist in the database!");
-			}
-		} catch (Exception e) {
-			//Log.error(e.getMessage());
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e1) {
+			e1.printStackTrace();
 		}
+		
+		Connection con = DriverManager.getConnection(
+				"jdbc:mysql://localhost:3306/week5", "root", "root");
+		return con;
 	}
 	
-	public static List<Employee> getList(int pageNo, int pageSize){
+	// Method to get list of employees and pass them to the TreeMap
+	public static List<Employee> getList(int pageNo, int pageSize) throws SQLException{
 		
 		
-		return employeeMap.entrySet()
-				.stream()
-				.skip((pageNo-1)*pageSize)
-				.limit(pageSize)
-				.map(Map.Entry::getValue)
-				.collect(Collectors.toList());
-	}
-	
-	public static Employee getEmployee(int id) {
-		return employeeMap.get(id);
-	}
-	
-	public static Employee insert(Employee emp) {
-		return employeeMap.put(emp.getId(), emp);
-	}
-	
-	public static Employee delete(int id) {
-		return employeeMap.remove(id);
-	}
-	
-	public static int getTotalRecords() {
-		return employeeMap.size();
-	}
-	
-	// Method for pulling employees from the employee database
-	List<Employee> getAllEmployees() throws SQLException, FileNotFoundException, IOException {
-
+		PreparedStatement pstmt = Connect().prepareStatement(
+				"SELECT * FROM Employees");
+		
 		List<Employee> list = new ArrayList<Employee>();
-	
-		PreparedStatement pstmt = JdbcUtils.getConnection().prepareStatement("SELECT * FROM Employees");
 		try {
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -92,35 +51,129 @@ public class EmployeeDao {
 				list.add(c);
 			}
 		} catch (SQLException sqle) {
-			//exception output
+			logger.error("error executing: " + sqle);
 		} finally {
 			if (pstmt != null) {
 				try {
 					pstmt.close();
+
 				} catch (SQLException e) {
 					/* ignore it */ }
-				}
+			}
+
 		}
-		return list;
+		
+		// Pass each employee found in the query list to the TreeMap employeeMap
+		for(Employee emp : list) {
+			employeeMap.put(emp.getId(),emp);;
+		}
+		
+		return employeeMap.entrySet()
+				.stream()
+				.skip((pageNo-1)*pageSize)
+				.limit(pageSize)
+				.map(Map.Entry::getValue)
+				.collect(Collectors.toList());
+		
 	}
 	
+	// Method to get a specific employee by id
+	public static Employee getEmployee(int id) throws SQLException {		
+		PreparedStatement statement = Connect().prepareStatement(
+				"SELECT * FROM Employees WHERE id = ?");
+		statement.setInt(1, id);
+		try {
+			statement.executeQuery();
+		} catch (SQLException sqle) {
+			logger.error("error executing select employee for id: " + id);
+		} finally {
+			statement.close();
+		}
+		
+		return employeeMap.get(id);
+	}
+	
+	// Insert/Add/Create a new employee to the database
+	public static Employee insert(Employee emp) throws SQLException {
+		PreparedStatement statement = Connect().prepareStatement(
+				"INSERT INTO employees(firstName, lastName) VALUES(?,?)");
+		
+		statement.setString(1, emp.getFirstName());
+		statement.setString(2, emp.getLastName());
+		try {
+			statement.executeUpdate();
+		} catch (SQLException sqle) {
+			logger.error("error executing insert for emp: " + emp);
+		} finally {
+			statement.close();
+		}
+		
+		return emp;
+	}
+	
+	// Update an employee that can currently be found in the database
+	public static Employee update(Employee emp) throws SQLException {
+		PreparedStatement statement = Connect().prepareStatement(
+				"UPDATE Employees SET firstName = ?, lastName = ? WHERE id = ?;");
+		
+		statement.setString(1, emp.getFirstName());
+		statement.setString(2, emp.getLastName());
+		statement.setInt(3, emp.getId());
+		try {
+			statement.executeUpdate();
+		} catch (SQLException sqle) {
+			logger.error("error executing insert for emp: " + emp);
+		} finally {
+			statement.close();
+		}
+		
+		return employeeMap.put(emp.getId(), emp);
+	}
+	
+	// Delete/Remove an employee from the database
+	public static Employee delete(int id) throws SQLException {
+		PreparedStatement statement = Connect().prepareStatement(
+				"DELETE FROM Employees where id = ?");
+		statement.setInt(1, id);
+		try {
+			statement.executeUpdate();
+		} catch (SQLException sqle) {
+			logger.error("error executing delete for id: " + id);
+		} finally {
+			statement.close();
+		}
+		
+		return employeeMap.remove(id);
+	}
+	
+
 	// Method for adding employees to the cache
-	private Employee resultSetToEmployee(ResultSet rs) throws SQLException {
+	private static Employee resultSetToEmployee(ResultSet rs) throws SQLException {
 		Employee employee = null;
-		String code = rs.getString("id");
+
+		String empId = rs.getString("id");
 		// Is this Employee already in cache? If so, use it
-		if (cache.containsKey(code))
-			employee = cache.get(code);
+		if (cache.containsKey(empId))
+			employee = cache.get(empId);
 		else
 			employee = new Employee();
-			employee.setId(rs.getInt("id"));
-			employee.setFirstName(rs.getString("firstName"));
-			employee.setLastName(rs.getString("lastName"));
+
+		employee.setId(rs.getInt("id"));
+		employee.setFirstName(rs.getString("firstName"));
+		employee.setLastName(rs.getString("lastName"));
+		
 
 		// add this employee to the cache
-		if (!cache.containsKey(code))
-			cache.put(code, employee);
+		if (!cache.containsKey(empId))
+			cache.put(empId, employee);
+
 
 		return employee;
-		}
+	}
+	
+	// Get the number of employees in the database
+	public static int getTotalRecords() {
+		return employeeMap.size();
+	}
+	
 }

@@ -6,15 +6,33 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Update Employee</title>
+<style>
+	body{
+	background-color:white;
+	color: black;
+	font-family: "Verdana", Verd, Sans-serif;
+	
+	}
+	a{
+		padding: 4px;
+		margin: 0 10px;
+		text-decoration: none;
+		font-weight: bold;
+		color: blue;
+		
+	}
+	a:hover{
+
+		color: limegreen;
+	}
+</style>
 </head>
 <body>
 <%
 String sId=request.getParameter("id");
 int id=Integer.parseInt(sId);
-//if(id<0) -> insert / else -> update
 Employee emp = new Employee(-1, "", "");
 String readonly="";
-out.print("id=" + id);
 if(id>0){
 	readonly="readonly";
 	emp = EmployeeDao.getEmployee(id);
@@ -31,5 +49,7 @@ if(id>0){
 			<input type="text" name="lastName" value="<%=emp.getLastName() %>"><br>
 		<input type="submit" value="Save">
 	</form>
+<br>
+<a href="view.jsp?pageNo=1">Back to Employee List</a>
 </body>
 </html>

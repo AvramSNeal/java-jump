@@ -6,6 +6,26 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Update Employee</title>
+<style>
+	body{
+	background-color:white;
+	color: black;
+	font-family: "Verdana", Verd, Sans-serif;
+	
+	}
+	a{
+		padding: 4px;
+		margin: 0 10px;
+		text-decoration: none;
+		font-weight: bold;
+		color: blue;
+		
+	}
+	a:hover{
+
+		color: limegreen;
+	}
+</style>
 </head>
 <body>
 <%
@@ -13,13 +33,15 @@ String empId=request.getParameter("id");
 String firstName=request.getParameter("firstName");
 String lastName=request.getParameter("lastName");
 Employee emp = new Employee(Integer.parseInt(empId), firstName, lastName);
-emp = EmployeeDao.insert(emp);
+emp = EmployeeDao.update(emp);
 if(emp!=null){
-	out.print("<h1>Employee : "
+	out.print("<h3>Employee : "
 			+ emp.getId()
 			+ " " + emp.getFirstName()
 			+ " " + emp.getLastName()
-			+ " - Saved!</h1>");
+			+ " => " + firstName
+			+ " " + lastName
+			+ " - Updated!</h3>");
 }
 
 %>

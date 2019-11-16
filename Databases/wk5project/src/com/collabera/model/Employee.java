@@ -10,6 +10,12 @@ public class Employee {
 		super();
 	}
 	
+	public Employee(String firstName, String lastName) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+	
 	public Employee(int id, String firstName, String lastName) {
 		super();
 		this.id = id;
