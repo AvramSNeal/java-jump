@@ -17,8 +17,7 @@
 		margin: 0 10px;
 		text-decoration: none;
 		font-weight: bold;
-		color: blue;
-		
+		color: blue;	
 	}
 	a:hover{
 
