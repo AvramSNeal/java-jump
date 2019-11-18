@@ -37,10 +37,18 @@
 </style>
 </head>
 <body>
+
+
 <%
-String spageNo=request.getParameter("pageNo");
+String spageNo = request.getParameter("pageNo");
 int pageNo=Integer.parseInt(spageNo);
-int pageSize=10;
+String spageSize = request.getParameter("pageSize");
+int pageSize;
+if (spageSize==null){
+	pageSize = 10;
+} else {
+	pageSize=Integer.parseInt(spageSize);
+}
 List<Employee> list = EmployeeDao.getList(pageNo, pageSize);
 
 int nrPages= (int)Math.ceil(EmployeeDao.getTotalRecords()/(double)pageSize);
@@ -48,7 +56,15 @@ int nrPages= (int)Math.ceil(EmployeeDao.getTotalRecords()/(double)pageSize);
 <h2>Employee Management System</h2>
 
 <h3>Page No: <%= pageNo %></h3>
+<form action="view.jsp">
+<select name="pageSize" onchange="this.form.submit()">
+	<option value="5" <% if( pageSize==5 ) out.print("selected"); %> >5</option>
+	<option value="10" <% if( pageSize==10 ) out.print("selected"); %> >10</option>
+	<option value="15" <% if( pageSize==15 ) out.print("selected"); %> >15</option>
+	<option value="20" <% if( pageSize==20 ) out.print("selected"); %> >20</option>
 
+</select>
+<input type="hidden" name="pageNo" value="<%=pageNo%>"></form>
 <table> 
 <tr>
 	<th><a href="create.jsp">Add a New Employee</a></th>
@@ -87,7 +103,7 @@ for(int i=1; i<=nrPages; i++){
 	}
 	else cssActive="";
 %>
-<a class="page-link <%=cssActive%>" href="view.jsp?pageNo=<%=i%>"> <%=i%> </a>
+<a class="page-link <%=cssActive%>" href="view.jsp?pageNo=<%=i%>&pageSize=<%=pageSize%>"> <%=i%> </a>
 <%}%>
 </div>
 </body>
