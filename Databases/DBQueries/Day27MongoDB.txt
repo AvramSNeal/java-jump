@@ -1,0 +1,39 @@
+use mydb; //Create database and/or select it
+
+db.mydb.help() //Get list of commands
+
+db.dropDatabase() //Used to delete the database
+
+//Adding (inserting) new values
+db.test.insert({"key":"value1","key2":"Val2","key3":"val3"})
+db.test.insert({"key":"value2","key2":"Val21","key3":"val31"})
+
+db.test.find().pretty() //Used to print the list in an organized (pretty) fashion
+
+db.people.save({name: 'Tom', age: 28}); //Like "insert", except if the _id already exists, it will update instead of making a new one.
+
+db.people.insertOne({name: 'Tom', age: 28}); //Insert only one record
+
+db.people.insertMany([{name: 'Tom', age: 28},{name: 'John', age: 25}]); //Insert multiple records
+
+db.people.update({name: 'Tom'}, {age: 29, name: 'Tom'});
+
+db.people.update({name: 'Tom'}, {age: 29, name: 'Tom'});
+//New in MongoDB 3.2
+db.people.updateOne({name: 'Tom'},{$set: {age: 29, name: 'Tom'}}); //Will replace only first matching document.
+db.people.updateMany({name: 'Tom'},{$set: {age: 29, name: 'Tom'}}); //Will replace all matching documents.
+db.people.update({name: 'Tom'}, {$set: {age: 29}}); //Update a single field
+
+db.people.update({name: 'Tom'}, {$set: {age: 29}}, {multi: true})
+//New in MongoDB 3.2
+db.people.updateOne({name: 'Tom'}, {$set: {age: 29}}); //Will updateonly first matching document.
+db.people.updateMany({name: 'Tom'}, {$set: {age: 31}});//Will update all matching documents.
+db.people.updateMany({name: 'Tom'},{$set:{age: 30, salary:50000}});//Document will have `salary` field as well.
+
+
+// New in MongoDB 3.2
+db.people.deleteMany({name: 'Tom'})
+// All versions
+db.people.remove({name: 'Tom'})
+db.people.remove({}); //Remove all records in the collection.
+
