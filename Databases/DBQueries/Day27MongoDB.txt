@@ -37,3 +37,5 @@ db.people.deleteMany({name: 'Tom'})
 db.people.remove({name: 'Tom'})
 db.people.remove({}); //Remove all records in the collection.
 
+db.people.update({name: "Tom", marks: 50}, {"$set": {"marks.$":55}})
+
