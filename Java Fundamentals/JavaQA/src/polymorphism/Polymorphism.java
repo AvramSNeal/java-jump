@@ -1,7 +1,11 @@
 package polymorphism;
 
 public class Polymorphism {
-//
+
+	public static void main(String[] args) {
+		
+		Main.main(args);
+	}
 }
 //Java program for Method overloading 
 
