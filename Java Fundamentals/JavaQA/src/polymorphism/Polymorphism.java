@@ -4,7 +4,11 @@ public class Polymorphism {
 
 	public static void main(String[] args) {
 		
+		System.out.println("Example 1:");
 		Main.main(args);
+		
+		System.out.println("\nExample 2:");
+		Main2.main(args);
 	}
 }
 //Java program for Method overloading 
