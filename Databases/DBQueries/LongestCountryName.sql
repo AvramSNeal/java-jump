@@ -23,3 +23,11 @@ WHERE country_name =
         WHERE c.region_id = r.region_id 
         ORDER BY length(c.country_name) DESC LIMIT 1)
 ORDER BY region_name;
+
+
+-- EXPERIMENT vvv
+USE hrdb;
+SELECT region_name, country_name FROM regions
+NATURAL JOIN countries c
+GROUP BY region_id HAVING length(c.country_name) = (SELECT max(length(c.country_name)))
+ORDER BY region_name;
