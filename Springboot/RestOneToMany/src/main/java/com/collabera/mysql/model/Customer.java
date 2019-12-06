@@ -1,7 +1,8 @@
 package com.collabera.mysql.model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,20 +10,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
-public class Person implements Serializable {
+public class Customer implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column(name = "person_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
@@ -34,74 +30,88 @@ public class Person implements Serializable {
 	@Column(name = "last_name")
 	private String lastName;
 	
-	@NotNull
-	@Column(name = "date_of_birth")
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd", timezone="CST")
-	private Date dob;
+	@Column(columnDefinition = "char(4) default '####'")
+	private String pin;
 	
-	@OneToOne(cascade = CascadeType.ALL) //, fetch = FetchType.LAZY)
-	@JoinColumn(unique = true) //, foreignKey = @ForeignKey(name = "address_id"))
-	private Address address;
-
+	@OneToMany(mappedBy="customer", cascade=CascadeType.ALL)
+	private List<Account> accounts;
 	
-	public Person() {
-		this(-1L, "N/A", "N/A", new Date(0), new Address());
+	public Customer() {
+		this(-1L, "N/A", "N/A", "####", new ArrayList<Account>());
 	}
 	
-
-	public Person(Long id, @NotBlank String firstName, @NotBlank String lastName, @NotNull Date dob, Address address) {
+	
+	public Customer(Long id, @NotBlank String firstName, @NotBlank String lastName, String pin, List<Account> accounts) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.dob = dob;
-		this.address = address;
+		this.pin = pin;
+		this.accounts = accounts;
 	}
+
 
 	public Long getId() {
 		return id;
 	}
 
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 
 	public String getFirstName() {
 		return firstName;
 	}
 
+
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+
 
 	public String getLastName() {
 		return lastName;
 	}
 
+
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
 
-	public Date getDob() {
-		return dob;
+
+	public String getPin() {
+		return pin;
 	}
 
-	public void setDob(Date dob) {
-		this.dob = dob;
-	}
-	
-	public Address getAddress() {
-		return address;
+
+	public void setPin(String pin) {
+		this.pin = pin;
 	}
 
-	public void setAddress(Address address) {
-		this.address = address;
+
+	public List<Account> getAccounts() {
+		return accounts;
 	}
+
+
+	public void setAccounts(List<Account> accounts) {
+		this.accounts = accounts;
+	}
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 
 	@Override
 	public String toString() {
-		return "Person [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", dob=" + dob + "]";
+		return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", pin=" + pin
+				+ ", accounts=" + accounts + "]";
 	}
+	
 	
 	
 	

@@ -15,7 +15,7 @@ public class Address implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column(name = "address_id")
+	//@Column(name = "address_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
@@ -33,15 +33,18 @@ public class Address implements Serializable {
 	
 	@OneToOne(mappedBy = "address")
 	private Person person;
+	
+	public Address() {
+		this(-1L, "N/A", "Unknown", "--", "00000");
+	}
 
-	public Address(Long id, String street, String city, String state, String zip, Person person) {
+	public Address(Long id, String street, String city, String state, String zip) {
 		super();
 		this.id = id;
 		this.street = street;
 		this.city = city;
 		this.state = state;
 		this.zip = zip;
-		this.person = person;
 	}
 
 	public Long getId() {
@@ -84,13 +87,6 @@ public class Address implements Serializable {
 		this.zip = zip;
 	}
 
-	public Person getPerson() {
-		return person;
-	}
-
-	public void setPerson(Person person) {
-		this.person = person;
-	}
 
 	@Override
 	public String toString() {
