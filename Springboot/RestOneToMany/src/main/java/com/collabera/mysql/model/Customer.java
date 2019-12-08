@@ -15,7 +15,7 @@ import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Customer implements Serializable {
-
+	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -33,15 +33,17 @@ public class Customer implements Serializable {
 	@Column(columnDefinition = "char(4) default '####'")
 	private String pin;
 	
-	@OneToMany(mappedBy="customer", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="customer", cascade = CascadeType.ALL)
 	private List<Account> accounts;
 	
 	public Customer() {
 		this(-1L, "N/A", "N/A", "####", new ArrayList<Account>());
 	}
 	
-	
-	public Customer(Long id, @NotBlank String firstName, @NotBlank String lastName, String pin, List<Account> accounts) {
+	public Customer(Long id, @NotBlank String firstName, 
+			@NotBlank String lastName, String pin,
+			List<Account> accounts) {
+		
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -97,7 +99,41 @@ public class Customer implements Serializable {
 
 
 	public void setAccounts(List<Account> accounts) {
-		this.accounts = accounts;
+		
+		for(int a = 0; a < accounts.size(); a++) {
+			addAccount(accounts.get(a));
+		}
+		
+	}
+	
+	private void addAccount(Account account) {
+		account.setCustomer(this);
+		accounts.add(account);
+	}
+	
+	public Account getAccount(Long id) {
+		
+		for(int a = 0; a < accounts.size(); a++) {
+			
+			if(accounts.get(a).getId() == id) {
+				return accounts.get(a);
+			}
+		}
+		
+		return new Account();
+	}
+	
+	public void updateAccount(Account account) {
+		
+		Account accToUpdate = getAccount(account.getId());
+		
+		if(accToUpdate.getId() != -1L) {
+			
+			accToUpdate.setAmount(account.getAmount());
+			accToUpdate.setType(account.getType());
+			
+		}
+		
 	}
 
 
@@ -111,8 +147,5 @@ public class Customer implements Serializable {
 		return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", pin=" + pin
 				+ ", accounts=" + accounts + "]";
 	}
-	
-	
-	
 	
 }

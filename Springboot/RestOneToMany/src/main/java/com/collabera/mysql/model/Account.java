@@ -15,6 +15,7 @@ import javax.validation.constraints.NotNull;
 
 import com.collabera.mysql.types.AccountType;
 
+
 @Entity
 public class Account implements Serializable {
 
@@ -31,15 +32,15 @@ public class Account implements Serializable {
 	@NotNull
 	@Enumerated(EnumType.STRING)
 	private AccountType type;
-
+	
 	@ManyToOne
-	@JoinColumn
+	@JoinColumn(name = "customer_id", referencedColumnName = "id")
 	private Customer customer;
 	
 	public Account() {
 		this(-1L, 0, AccountType.CHECKING);
 	}
-	
+
 	public Account(Long id, @NotNull Integer amount, @NotNull AccountType type) {
 		super();
 		this.id = id;
@@ -74,13 +75,14 @@ public class Account implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
 
 	@Override
 	public String toString() {
 		return "Account [id=" + id + ", amount=" + amount + ", type=" + type + "]";
-	}
-	
-	
-	
-	
+	}	
+
 }
