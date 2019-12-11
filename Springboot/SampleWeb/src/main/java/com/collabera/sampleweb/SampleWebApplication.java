@@ -1,13 +1,13 @@
-package com.collabera;
+package com.collabera.sampleweb;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringFeaturesApplication {
+public class SampleWebApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringFeaturesApplication.class, args);
+		SpringApplication.run(SampleWebApplication.class, args);
 	}
 
 }
