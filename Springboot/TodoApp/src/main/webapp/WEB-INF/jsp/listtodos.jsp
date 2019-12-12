@@ -4,9 +4,11 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Welcome Page</title>
+<title>Insert title here</title>
 </head>
 <body>
-	Welcome ${name} to Todo Application <a href="/listtodos">click here to list todos</a>
+
+Show Todos
+${todos}
 </body>
 </html>
