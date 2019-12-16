@@ -6,9 +6,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class WelcomeController {
-	
-	@RequestMapping(value ="/welcome", method = RequestMethod.GET)
-	public  String welcomeMessage() {
+	@RequestMapping(value = "/welcome", method =RequestMethod.GET)
+	public String welcomeMessage() {
 		return "welcome";
 	}
 }

@@ -2,24 +2,30 @@ package main;
 // vvv PUT CODE BELOW THIS vvv
 
 
-
 import java.io.*;
 import java.util.*;
-import java.text.*;
-import java.math.*;
-import java.util.regex.*;
 
 public class Solution {
 
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        String S = in.next();
-        int start = in.nextInt();
-        int end = in.nextInt();
+        Scanner scan = new Scanner(System.in);
+        String s = scan.nextLine();
+        // Write your code here.
+
+        String words[] = s.split("[\\s*+\\\\!,?._'@]+");
+        int count = 0;
         
+        for(String word : words){
+            count++;
+        }
         
-        System.out.println(S.substring(start, end));
+        System.out.println(count);
+        for(String word : words){
+            System.out.println(word);
+        }
+
+
+        scan.close();
     }
 }
-
 
