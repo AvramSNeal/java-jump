@@ -1,4 +1,4 @@
-package com.collabera.jump.other;
+package com.collabera.hackerrank;
 
 import java.io.*;
 import java.math.*;

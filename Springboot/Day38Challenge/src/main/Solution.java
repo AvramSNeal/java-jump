@@ -1,31 +1,38 @@
 package main;
 // vvv PUT CODE BELOW THIS vvv
 
-
-import java.io.*;
-import java.util.*;
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Solution {
 
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-        String s = scan.nextLine();
-        // Write your code here.
 
-        String words[] = s.split("[\\s*+\\\\!,?._'@]+");
-        int count = 0;
+        String regex = "";
+        //Pattern p = Pattern.compile(regex, /* Insert the correct Pattern flag here.*/);
+
+        Scanner in = new Scanner(System.in);
+        int numSentences = Integer.parseInt(in.nextLine());
         
-        for(String word : words){
-            count++;
+        while (numSentences-- > 0) {
+            String input = in.nextLine();
+            
+            Matcher m = p.matcher(input);
+            
+            // Check for subsequences of input that match the compiled pattern
+            while (m.find()) {
+                //input = input.replaceAll(/* The regex to replace */, /* The replacement. */);
+            }
+            
+            // Prints the modified sentence.
+            System.out.println(input);
         }
         
-        System.out.println(count);
-        for(String word : words){
-            System.out.println(word);
-        }
-
-
-        scan.close();
+        in.close();
     }
 }
+
+// TEST -> Reya is is the the best player in eye eye game
+
 

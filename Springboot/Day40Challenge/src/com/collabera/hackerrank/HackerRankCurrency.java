@@ -1,4 +1,4 @@
-package com.collabera.jump.other;
+package com.collabera.hackerrank;
 
 import java.text.NumberFormat;
 import java.util.Locale;
