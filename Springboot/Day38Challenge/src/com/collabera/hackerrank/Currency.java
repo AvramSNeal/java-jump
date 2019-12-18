@@ -3,7 +3,7 @@ package com.collabera.hackerrank;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-public class HackerRankCurrency {
+public class Currency {
     
     public static void main(String[] args) {
         //Scanner scanner = new Scanner(System.in);
