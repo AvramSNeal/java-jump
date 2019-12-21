@@ -2,13 +2,23 @@ package com.collabera.todoapp.model;
 
 import java.util.Date;
 
-public class Todo {
+import javax.validation.constraints.Future;
+import javax.validation.constraints.Size;
 
+public class Todo {
+	
 	private int id;
+	// which should take more than 5 characters
+	@Size(min = 5, message = "Description field should contain 5 or more character")
 	private String desc;
 	private String user;
+	@Future(message="Date should be greater than today")
 	private Date targetDate;
 	private boolean status;
+	
+	public Todo() {
+		super();
+	}
 	
 	public Todo(int id, String desc, String user, Date targetDate, boolean status) {
 		super();

@@ -5,12 +5,14 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import com.collabera.todoapp.model.Todo;
 
 @Service
-public class TodoService {
+@Primary
+public class TodoService implements TodoServiceI{
 	
 	// in memory database
 	private static List<Todo> todos = new ArrayList<Todo>();
@@ -53,6 +55,8 @@ public class TodoService {
 
 	// update a todo in the list
 	public Todo editTodo(Todo todo){
+		deleteTodo(todo.getId());
+		todos.add(todo);
 		return todo;
 	}
 	

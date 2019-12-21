@@ -1,7 +1,6 @@
 <%@ include file="common/header.jspf" %>
 <%@ include file="common/navigation.jspf" %>
 
-	Welcome ${name} to Todo Application 
-	<a href="/listtodos"> click here to list todos</a>
+	You dont have access for this page
 	
 <%@ include file="common/footer.jspf" %>

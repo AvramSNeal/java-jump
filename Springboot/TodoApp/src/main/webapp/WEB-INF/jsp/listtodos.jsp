@@ -7,6 +7,7 @@
 					<th>Target Date</th>
 					<th>Status</th>
 					<th></th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -14,8 +15,11 @@
 				<c:forEach items="${todos}" var="todo">
 					<tr>
 						<td>${todo.desc}</td>
-						<td>${todo.targetDate }</td>
+						<td><fmt:formatDate value="${todo.targetDate }" 
+						pattern="dd/MM/yyyy"/> </td>
 						<td>${todo.status}</td>
+						<td><a role="button" class="btn btn-Success"
+							href="/edittodo?todoId=${todo.id}">Edit</a></td>
 						<td><a role="button" class="btn btn-warning"
 							href="/deletetodo?todoId=${todo.id}">Delete</a></td>
 					</tr>

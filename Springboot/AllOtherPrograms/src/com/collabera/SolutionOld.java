@@ -1,4 +1,4 @@
-package main;
+package com.collabera;
 // vvv PUT CODE BELOW THIS vvv
 
 import java.io.*;
@@ -62,7 +62,6 @@ public class SolutionOld {
 				rAngles[b - 1] = 0;
 			}
 		}
-
 		return rAngles;
 	}
 }
