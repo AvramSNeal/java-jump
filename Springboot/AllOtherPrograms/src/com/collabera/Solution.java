@@ -11,7 +11,7 @@ public class Solution {
 
 	public static void main(String[] args) throws IOException {
 
-		System.out.println(args[2]); // Doesn't compile?
+		System.out.println(args[2]); // Doesn't compile? Runtime Exception?
 
 	}
 }
