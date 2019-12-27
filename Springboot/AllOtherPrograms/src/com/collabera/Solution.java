@@ -11,7 +11,20 @@ public class Solution {
 
 	public static void main(String[] args) throws IOException {
 
-		System.out.println(args[0]); // Doesn't compile? Runtime Exception? xy
+		int upperGrade;
+		List<Integer> grades = new ArrayList<Integer>();
+		grades.add(73);
+		grades.add(67);
+		grades.add(38); // Test
+		grades.add(33);
+		
+        for(int grade : grades){
+            upperGrade = grade + (5 - grade%5);
+            if((upperGrade-grade)<3&&grade>=38) grades.set(grades.indexOf(grade), upperGrade);
+            System.out.println(upperGrade);
+        }
+
+        System.out.println(grades.toString());
 
 	}
 }
