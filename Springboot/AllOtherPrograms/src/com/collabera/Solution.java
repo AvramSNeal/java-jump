@@ -9,6 +9,7 @@ import java.util.regex.*;
 
 public class Solution {
 
+	// This program checks if the grade it divisible by 5 and if it is not, it makes other adjustments
 	public static void main(String[] args) throws IOException {
 
 		int upperGrade;
@@ -21,7 +22,7 @@ public class Solution {
         for(int grade : grades){
             upperGrade = grade + (5 - grade%5);
             if((upperGrade-grade)<3&&grade>=38) grades.set(grades.indexOf(grade), upperGrade);
-            System.out.println(upperGrade);
+            System.out.println(upperGrade); 
         }
 
         System.out.println(grades.toString());
