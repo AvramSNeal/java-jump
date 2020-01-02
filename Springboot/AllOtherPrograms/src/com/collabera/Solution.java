@@ -21,7 +21,7 @@ public class Solution {
 		
         for(int grade : grades){
             upperGrade = grade + (5 - grade%5);
-            if((upperGrade-grade)<3&&grade>=38) grades.set(grades.indexOf(grade), upperGrade); // Check if grade should be adjusted.
+            if((upperGrade-grade)<3&&grade>=38) grades.set(grades.indexOf(grade), upperGrade); // Check if grade should be adjusted
             System.out.println(upperGrade); 
         }
 
