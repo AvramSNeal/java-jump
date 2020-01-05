@@ -18,7 +18,7 @@ public class ApplesOranges {
 
         for(int obj: apples){
             int dist = a + obj;
-            if(s <= dist && dist <= t)countA++;
+            if(s <= dist && dist <= t)countA++; // check
         }
         System.out.println(countA);
         for(int obj: oranges){
