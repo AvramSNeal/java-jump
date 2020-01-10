@@ -10,22 +10,13 @@ import java.util.regex.*;
 public class Solution {
 
 	// This program checks if the grade it divisible by 5 and if it is not, it makes other adjustments
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 
-		int upperGrade;
-		List<Integer> grades = new ArrayList<Integer>();
-		grades.add(73);
-		grades.add(67);
-		grades.add(38); // Test
-		grades.add(33);
+		final int age;
 		
-        for(int grade : grades){
-            upperGrade = grade + (5 - grade%5);
-            if((upperGrade-grade)<3&&grade>=38) grades.set(grades.indexOf(grade), upperGrade); // Check if grade should be adjusted
-            System.out.println(upperGrade); 
-        }
-
-        System.out.println(grades.toString());
+		age = 24;
+		
+		System.out.println(age);
 
 	}
 }
