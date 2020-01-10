@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.2.2.RELEASE</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.cognixia.springboot.demo</groupId>
+	<artifactId>helloapp</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>helloapp</name>
+	<description>Demo project for Spring Boot</description>
+
+	<properties>
+		<java.version>1.12</java.version>
+		<maven-jar-plugin.verson>3.1.1</maven-jar-plugin.verson>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.junit.vintage</groupId>
+					<artifactId>junit-vintage-engine</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- Add Support for Automatic reloading through devtools -->
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+		</dependency>
+
+		<!-- Add Support for SPRING BOOT ACTUATOR -->
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
+		<!-- Add Support for SPRING BOOT SECURITY -->
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+		<!-- Add Support for SPRING BOOT SECURITY TEST -->
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+		</dependency>
+		
+		<!-- Add Support for OAUTH REST API FEATURE -->
+
+		<dependency>
+			<groupId>org.springframework.security.oauth.boot</groupId>
+			<artifactId>spring-security-oauth2-autoconfigure</artifactId>
+			<version>2.0.0.RELEASE</version>
+		</dependency>
+		
+		<!-- Solon made me do it -->
+		<dependency>
+	        <groupId>javax.xml.bind</groupId>
+	        <artifactId>jaxb-api</artifactId>
+	        <version>2.3.0</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>com.sun.xml.bind</groupId>
+	        <artifactId>jaxb-core</artifactId>
+	        <version>2.3.0</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>com.sun.xml.bind</groupId>
+	        <artifactId>jaxb-impl</artifactId>
+	        <version>2.3.0</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>javax.activation</groupId>
+	        <artifactId>activation</artifactId>
+	        <version>1.1.1</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
