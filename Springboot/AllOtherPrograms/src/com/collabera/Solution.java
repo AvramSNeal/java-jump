@@ -16,7 +16,7 @@ public class Solution {
 		
 		age = 24;
 		
-		System.out.println(age);
+		System.out.println(age); //testing
 
 	}
 }
