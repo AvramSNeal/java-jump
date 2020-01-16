@@ -8,6 +8,21 @@
 		},
 		{
 			"path": "02-Classes"
+		},
+		{
+			"path": "03-Interfaces"
+		},
+		{
+			"path": "04-Generics"
+		},
+		{
+			"path": "05-Modules"
+		},
+		{
+			"path": "06-MyFirstAngularApp"
+		},
+		{
+			"path": "ShoppingList"
 		}
 	],
 	"settings": {}

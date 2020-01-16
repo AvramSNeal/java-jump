@@ -1,4 +1,7 @@
 // Typescripts are strong typing which allows us to define types for our variables and class members.
+// The compiler will yell at us if we assign a value of wrong type to such a vaariable or member.
+// Declaring a variable with a type
+// We use 'let' keyword to create a varable and we use 'const' keyword to define an immutable constant
 
 
 let myString: string;

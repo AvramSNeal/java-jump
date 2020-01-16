@@ -1,41 +1,26 @@
 //classes allow us to create 'blueprints' for objects
 //in ng 8 we use classes a lot, we use in creating components, services, directives, pipes. etc.
-
 //How to ccreate a class
-class Car
-{
-    engineName: String;
-    gears: number;
-    private speed: number;
-
-    constructor(speed: number)
-    {
+var Car = /** @class */ (function () {
+    function Car(speed) {
         this.speed = speed || 0; //assigning speed to 0 as part of the constructor
     }
-
-    accelerate(): void
-    {
+    Car.prototype.accelerate = function () {
         this.speed++;
-    }
-
-    throtle(): void
-    {
+    };
+    Car.prototype.throtle = function () {
         this.speed--;
-    }
-
-    getSpeed(): void
-    {
+    };
+    Car.prototype.getSpeed = function () {
         console.log(this.speed);
-    }
-
-    static numberWheels(): number
-    {
+    };
+    Car.numberWheels = function () {
         return 4;
-    }
-}
-
+    };
+    return Car;
+}());
 //creating an object from a class
-let car = new Car(5);
+var car = new Car(5);
 car.accelerate();
 car.getSpeed();
 console.log(Car.numberWheels());
