@@ -5,5 +5,10 @@ import { Component } from '@angular/core';
   templateUrl: './server.component.html'
 })
 export class ServerComponent {
-  title = 'component-app';
+  serverID: number = 25;
+  serverStatus: string = 'offline';
+
+  getServerStatus(){
+    return this.serverStatus;
+  }
 }

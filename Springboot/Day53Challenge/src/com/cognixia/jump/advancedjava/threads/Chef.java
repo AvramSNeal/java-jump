@@ -16,7 +16,7 @@ public class Chef implements Runnable {
 		String name = Thread.currentThread().getName();
 		String orderItem = null;
 
-		System.out.println(name + " waiting for an order to prepare");
+		System.out.println(name + " waiting for an order to prepare"); //Test
 
 		synchronized (orders) {
 
