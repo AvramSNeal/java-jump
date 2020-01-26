@@ -42,7 +42,7 @@ public class ArraySum {
             ar[arItr] = arItem;
         }
 
-        int result = simpleArraySum(ar);
+        int result = simpleArraySum(ar); //
 
         System.out.println("The numbers added together: " + result); // <-- Added for console
         /*
