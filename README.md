@@ -4,10 +4,10 @@ This repository is the hub for my projects and other works during my training at
 
 ## Projects
 
-You can find weekly projects in the source folder of [Projects](https://github.com/AvramSNeal/java-jump/Java Fundamentals/Projects/src).
+You can find weekly projects in the source folder of [Projects](https://github.com/AvramSNeal/java-jump/tree/master/Java%20Fundamentals/Projects/src).
 
 ```bash
-https://github.com/AvramSNeal/java-jump/tree/master/Projects/src
+https://github.com/AvramSNeal/java-jump/Java Fundamentals/Projects/src
 ```
 
 ## Contributing
