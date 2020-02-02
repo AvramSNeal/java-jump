@@ -17,6 +17,15 @@ public class Solution {
 		age = 24;
 		
 		System.out.println(age); 
+		
+		String str = "Hello World";
+		String strNum = "0123456789";
+		System.out.println(str.substring(1));
+		System.out.println(str.substring(1,2));
+		
+		System.out.println(strNum.substring(0));
+		System.out.println(strNum.substring(0,2));
+		System.out.println(strNum.substring(2,6));
 
 	}
 }
