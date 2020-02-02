@@ -8,11 +8,11 @@ public class CollegeClass {
 	private int roomNumber;
 	private int classSize; // onlye generate getter for size
 	
-	private Student[] students;
-	
-	public CollegeClass() {
-		this("N/A", "N/A", "N/A", -1);
-	}
+//	private Student[] students;
+//	
+//	public CollegeClass() {
+//		this("N/A", "N/A", "N/A", -1);
+//	}
 	
 	public CollegeClass(String subject, String className, String building, int roomNumber, int classSize) {
 		super();
@@ -59,7 +59,6 @@ public class CollegeClass {
 		return classSize;
 	}
 
-	
 	
 	
 	
