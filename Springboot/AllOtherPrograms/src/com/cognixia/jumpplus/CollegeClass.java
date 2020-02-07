@@ -6,7 +6,7 @@ public class CollegeClass {
 	private String className;
 	private String building;
 	private int roomNumber;
-	private int classSize; // onlye generate getter for size
+	private int classSize; // only generate getter for size
 	
 //	private Student[] students;
 //	
