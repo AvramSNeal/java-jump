@@ -20,7 +20,7 @@ public class CollegeClass {
 		this.className = className;
 		this.building = building;
 		this.roomNumber = roomNumber;
-		this.classSize = classSize;//
+		this.classSize = classSize;
 	}
 
 	public String getSubject() {
