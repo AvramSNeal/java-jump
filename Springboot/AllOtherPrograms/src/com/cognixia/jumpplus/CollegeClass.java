@@ -23,7 +23,7 @@ public class CollegeClass {
 		this.classSize = classSize;
 	}
 
-	public String getSubject() {
+	public String getSubject() { 
 		return subject;
 	}
 
