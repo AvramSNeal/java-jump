@@ -3,7 +3,7 @@ package com.collabera;
 import java.util.Scanner;
 
 // A solution from https://www.tutorialspoint.com/Sieve-of-Eratosthenes-in-java
-
+//
 public class SieveOfEratosthenes  {
    public static void main(String args[]) {
       Scanner sc = new Scanner(System.in);
